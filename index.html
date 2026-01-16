@@ -1,63 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfólio // Visual Experience</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- CSS PERMANECE O MESMO, COM PEQUENOS AJUSTES --- */
+    :root {
+      --bg-color: #05020a;
+      --primary: #bb29ff; 
+      --secondary: #00f2ff;
+      --glass: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --text: #e0e0e0;
+    }
+
+    @keyframes gradient-move {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(-45deg, #0f0617, #1a0b2e, #240046, #000000);
+      background-size: 400% 400%;
+      animation: gradient-move 15s ease infinite;
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 4rem;
+      margin: 0;
+      background: -webkit-linear-gradient(0deg, var(--secondary), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0px 0px 30px rgba(187, 41, 255, 0.4);
+      letter-spacing: -2px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    header p {
+      font-weight: 300;
+      font-size: 1.2rem;
+      opacity: 0.8;
+      margin-top: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    section {
+      padding: 40px;
+      max-width: 1200px; /* Aumentei um pouco a largura */
+      width: 90%;
+      margin: 0 auto 50px auto;
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      min-height: 300px; /* Altura mínima para o loading */
+    }
+
+    h2 {
+      border-bottom: 2px solid var(--primary);
+      display: inline-block;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 1.5rem;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      background: #000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      aspect-ratio: 16 / 9; /* Mantém proporção de vídeo */
+    }
+
+    .video-wrapper:hover {
+      transform: scale(1.03) translateY(-5px);
+      border-color: var(--secondary);
+      box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Loading Spinner */
+    #loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      font-size: 1.2rem;
+      color: var(--secondary);
+      flex-direction: column;
+      gap: 15px;
+    }
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255,255,255,0.1);
+      border-top: 4px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    /* Elementos decorativos */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: -1;
+      opacity: 0.6;
+    }
+    .orb-1 { width: 300px; height: 300px; background: var(--primary); top: 10%; left: 10%; animation: float 8s alternate infinite; }
+    .orb-2 { width: 400px; height: 400px; background: #3a0ca3; bottom: 20%; right: 5%; animation: float 10s alternate-reverse infinite; }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: rgba(0,0,0,0.8);
+      font-size: 14px;
+      color: #888;
+      margin-top: auto;
+      border-top: 1px solid var(--glass-border);
+    }
+    footer span { color: var(--secondary); font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<header>
+  <h1>SOARES</h1>
+  <p>Edição de Alta Performance</p>
+</header>
+
+<section>
+  <h2>Galeria Dinâmica</h2>
+
+  <div id="loader">
+    <div class="spinner"></div>
+    <p>Carregando projetos...</p>
+  </div>
+
+  <div class="video-grid" id="video-container"></div>
+</section>
+
+<footer>
+  © 2026 — Otimizado e Automatizado</span>.
+</footer>
+
 <script>
-  const githubUser = 'GHOSTGOSTOSO';
-  const githubRepo = 'portifolio';
-  const folderName = 'videos';
-  const branch = 'main'; // se não funcionar, troca pra 'master'
+  // ================= CONFIGURAÇÃO =================
+  // Coloque seu usuário do GitHub e o nome do repositório aqui:
+  const githubUser = 'GHOSTGOSTOSO'; 
+  const githubRepo = 'Portifolio'; 
+  const folderName = 'videos'; // O nome da pasta onde estão os arquivos
+  // ================================================
 
   const container = document.getElementById('video-container');
   const loader = document.getElementById('loader');
 
   async function loadVideos() {
     try {
+      // 1. Conecta na API do GitHub para ler a pasta
       const apiUrl = `https://api.github.com/repos/${githubUser}/${githubRepo}/contents/${folderName}`;
       const response = await fetch(apiUrl);
 
-      if (!response.ok) throw new Error('Erro na API');
+      if (!response.ok) throw new Error('Pasta não encontrada ou erro na API');
 
       const data = await response.json();
 
-      const videos = data.filter(file =>
-        file.name.toLowerCase().endsWith('.mp4')
+      // 2. Filtra apenas arquivos de vídeo (mp4, webm, mov)
+      const videos = data.filter(file => 
+        file.name.match(/\.(mp4|webm|mov)$/i)
       );
 
+      // 3. Oculta o loader
       loader.style.display = 'none';
 
-      if (!videos.length) {
-        container.innerHTML = '<p style="text-align:center;width:100%;">Nenhum vídeo encontrado.</p>';
+      // 4. Cria o HTML para cada vídeo
+      if (videos.length === 0) {
+        container.innerHTML = '<p style="text-align:center; width:100%;">Nenhum vídeo encontrado na pasta.</p>';
         return;
       }
 
       videos.forEach(video => {
-        const rawUrl = `https://raw.githubusercontent.com/${githubUser}/${githubRepo}/${branch}/${folderName}/${video.name}`;
-
+        // Cria a estrutura do card
         const wrapper = document.createElement('div');
         wrapper.className = 'video-wrapper';
 
+        // Otimização: preload="metadata" carrega só o início, não o vídeo todo
+        // Otimização: muted playsinline ajuda a carregar mais rápido em mobile
         wrapper.innerHTML = `
-          <video
-            controls
-            preload="none"
+          <video 
+            controls 
+            preload="metadata" 
             playsinline
-            muted
+            title="${video.name}"
           >
-            <source src="${rawUrl}" type="video/mp4">
-            Seu navegador não suporta vídeo.
+            <source src="${video.download_url}" type="video/mp4">
+            Seu navegador não suporta vídeos.
           </video>
         `;
-
         container.appendChild(wrapper);
       });
 
-    } catch (err) {
-      console.error(err);
-      loader.innerHTML = `
-        <p style="color:#ff4d4d; text-align:center;">
-          Erro ao carregar vídeos.<br>
-          Verifique usuário, repo, pasta ou branch.
-        </p>
-      `;
+    } catch (error) {
+      console.error(error);
+      loader.innerHTML = `<p style="color: #ff4d4d">Erro ao carregar vídeos.<br>Verifique as configurações no código.</p>`;
     }
   }
 
+  // Executa a função
   loadVideos();
 </script>
+
+</body>
+</html>
