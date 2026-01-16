@@ -1,52 +1,63 @@
-const githubUser = 'GHOSTGOSTOSO';
-const githubRepo = 'portifolio';
-const folderName = 'videos';
-const branch = 'main'; // troca pra 'master' se main não funcionar
+<script>
+  const githubUser = 'GHOSTGOSTOSO';
+  const githubRepo = 'portifolio';
+  const folderName = 'videos';
+  const branch = 'main'; // se não funcionar, troca pra 'master'
 
-async function loadVideos() {
-  try {
-    const apiUrl = `https://api.github.com/repos/${githubUser}/${githubRepo}/contents/${folderName}`;
-    const response = await fetch(apiUrl);
+  const container = document.getElementById('video-container');
+  const loader = document.getElementById('loader');
 
-    if (!response.ok) throw new Error('Erro ao acessar a pasta');
+  async function loadVideos() {
+    try {
+      const apiUrl = `https://api.github.com/repos/${githubUser}/${githubRepo}/contents/${folderName}`;
+      const response = await fetch(apiUrl);
 
-    const files = await response.json();
+      if (!response.ok) throw new Error('Erro na API');
 
-    const videos = files.filter(file =>
-      file.name.toLowerCase().endsWith('.mp4')
-    );
+      const data = await response.json();
 
-    loader.style.display = 'none';
+      const videos = data.filter(file =>
+        file.name.toLowerCase().endsWith('.mp4')
+      );
 
-    if (!videos.length) {
-      container.innerHTML = '<p style="text-align:center">Nenhum vídeo encontrado.</p>';
-      return;
-    }
+      loader.style.display = 'none';
 
-    videos.forEach(video => {
-      const rawUrl = `https://raw.githubusercontent.com/${githubUser}/${githubRepo}/${branch}/${folderName}/${video.name}`;
+      if (!videos.length) {
+        container.innerHTML = '<p style="text-align:center;width:100%;">Nenhum vídeo encontrado.</p>';
+        return;
+      }
 
-      const wrapper = document.createElement('div');
-      wrapper.className = 'video-wrapper';
+      videos.forEach(video => {
+        const rawUrl = `https://raw.githubusercontent.com/${githubUser}/${githubRepo}/${branch}/${folderName}/${video.name}`;
 
-      wrapper.innerHTML = `
-        <video controls preload="none" playsinline muted>
-          <source src="${rawUrl}" type="video/mp4">
-        </video>
+        const wrapper = document.createElement('div');
+        wrapper.className = 'video-wrapper';
+
+        wrapper.innerHTML = `
+          <video
+            controls
+            preload="none"
+            playsinline
+            muted
+          >
+            <source src="${rawUrl}" type="video/mp4">
+            Seu navegador não suporta vídeo.
+          </video>
+        `;
+
+        container.appendChild(wrapper);
+      });
+
+    } catch (err) {
+      console.error(err);
+      loader.innerHTML = `
+        <p style="color:#ff4d4d; text-align:center;">
+          Erro ao carregar vídeos.<br>
+          Verifique usuário, repo, pasta ou branch.
+        </p>
       `;
-
-      container.appendChild(wrapper);
-    });
-
-  } catch (err) {
-    console.error(err);
-    loader.innerHTML = `
-      <p style="color:red; text-align:center">
-        Erro ao carregar vídeos.<br>
-        Usuário, repo, pasta ou branch errados.
-      </p>
-    `;
+    }
   }
-}
 
-loadVideos();
+  loadVideos();
+</script>
