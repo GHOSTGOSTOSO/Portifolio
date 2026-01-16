@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Portifolio // Visual Experience</title>
+  <title>Portfólio // Visual Experience</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,17 +10,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
 
   <style>
-    /* VARIÁVEIS DE COR E ESTILO */
+    /* --- CSS PERMANECE O MESMO, COM PEQUENOS AJUSTES --- */
     :root {
       --bg-color: #05020a;
-      --primary: #bb29ff; /* Roxo Neon */
-      --secondary: #00f2ff; /* Ciano Neon */
+      --primary: #bb29ff; 
+      --secondary: #00f2ff;
       --glass: rgba(255, 255, 255, 0.05);
       --glass-border: rgba(255, 255, 255, 0.1);
       --text: #e0e0e0;
     }
 
-    /* ANIMAÇÃO DE FUNDO */
     @keyframes gradient-move {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -32,8 +31,12 @@
       50% { transform: translateY(-10px); }
       100% { transform: translateY(0px); }
     }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 
-    /* ESTILO GERAL */
     body {
       margin: 0;
       font-family: 'Outfit', sans-serif;
@@ -47,7 +50,6 @@
       flex-direction: column;
     }
 
-    /* HEADER ESTILIZADO */
     header {
       text-align: center;
       padding: 80px 20px;
@@ -75,19 +77,18 @@
       text-transform: uppercase;
     }
 
-    /* SEÇÃO PRINCIPAL (CARD DE VIDRO) */
     section {
       padding: 40px;
-      max-width: 1000px;
+      max-width: 1200px; /* Aumentei um pouco a largura */
+      width: 90%;
       margin: 0 auto 50px auto;
-      
-      /* Efeito Glassmorphism */
       background: var(--glass);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--glass-border);
       border-radius: 24px;
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      min-height: 300px; /* Altura mínima para o loading */
     }
 
     h2 {
@@ -100,10 +101,9 @@
       font-size: 1.5rem;
     }
 
-    /* GRID DE VÍDEOS */
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
     }
 
@@ -115,6 +115,7 @@
       transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
       background: #000;
       box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      aspect-ratio: 16 / 9; /* Mantém proporção de vídeo */
     }
 
     .video-wrapper:hover {
@@ -126,11 +127,31 @@
     video {
       width: 100%;
       height: 100%;
-      display: block;
       object-fit: cover;
+      display: block;
     }
 
-    /* DETALHE DECORATIVO (Bolinhas de fundo) */
+    /* Loading Spinner */
+    #loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      font-size: 1.2rem;
+      color: var(--secondary);
+      flex-direction: column;
+      gap: 15px;
+    }
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255,255,255,0.1);
+      border-top: 4px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    /* Elementos decorativos */
     .orb {
       position: absolute;
       border-radius: 50%;
@@ -138,24 +159,9 @@
       z-index: -1;
       opacity: 0.6;
     }
-    .orb-1 {
-      width: 300px;
-      height: 300px;
-      background: var(--primary);
-      top: 10%;
-      left: 10%;
-      animation: float 8s ease-in-out infinite alternate;
-    }
-    .orb-2 {
-      width: 400px;
-      height: 400px;
-      background: #3a0ca3;
-      bottom: 20%;
-      right: 5%;
-      animation: float 10s ease-in-out infinite alternate-reverse;
-    }
+    .orb-1 { width: 300px; height: 300px; background: var(--primary); top: 10%; left: 10%; animation: float 8s alternate infinite; }
+    .orb-2 { width: 400px; height: 400px; background: #3a0ca3; bottom: 20%; right: 5%; animation: float 10s alternate-reverse infinite; }
 
-    /* FOOTER */
     footer {
       text-align: center;
       padding: 30px;
@@ -165,17 +171,7 @@
       margin-top: auto;
       border-top: 1px solid var(--glass-border);
     }
-
-    footer span {
-      color: var(--secondary);
-      font-weight: bold;
-    }
-
-    /* RESPONSIVIDADE */
-    @media (max-width: 768px) {
-      header h1 { font-size: 2.5rem; }
-      section { padding: 20px; width: 90%; }
-    }
+    footer span { color: var(--secondary); font-weight: bold; }
   </style>
 </head>
 <body>
@@ -185,31 +181,89 @@
 
 <header>
   <h1>SOARES</h1>
-  <p>Seu conteúdo, editado pra performar melhor.</p>
+  <p>Edição de Alta Performance</p>
 </header>
 
 <section>
-  <h2>Projetos em Vídeo</h2>
+  <h2>Galeria Dinâmica</h2>
 
-  <div class="video-grid">
-    <div class="video-wrapper">
-      <video controls src="videos/video1.mp4" poster="https://via.placeholder.com/600x400/1a0b2e/ffffff?text=Video+01"></video>
-    </div>
-
-    <div class="video-wrapper">
-      <video controls src="videos/video2.mp4" poster="https://via.placeholder.com/600x400/1a0b2e/ffffff?text=Video+02"></video>
-    </div>
-
-    <div class="video-wrapper">
-      <video controls src="videos/video3.mp4" poster="https://via.placeholder.com/600x400/1a0b2e/ffffff?text=Video+03"></video>
-    </div>
+  <div id="loader">
+    <div class="spinner"></div>
+    <p>Carregando projetos...</p>
   </div>
 
+  <div class="video-grid" id="video-container"></div>
 </section>
 
 <footer>
-  © 2026 — Desenvolvimento com atenção aos detalhes</span>.
+  © 2026 — Otimizado e Automatizado</span>.
 </footer>
+
+<script>
+  // ================= CONFIGURAÇÃO =================
+  // Coloque seu usuário do GitHub e o nome do repositório aqui:
+  const githubUser = 'SEU_USUARIO_AQUI'; 
+  const githubRepo = 'NOME_DO_REPO_AQUI'; 
+  const folderName = 'videos'; // O nome da pasta onde estão os arquivos
+  // ================================================
+
+  const container = document.getElementById('video-container');
+  const loader = document.getElementById('loader');
+
+  async function loadVideos() {
+    try {
+      // 1. Conecta na API do GitHub para ler a pasta
+      const apiUrl = `https://api.github.com/repos/${githubUser}/${githubRepo}/contents/${folderName}`;
+      const response = await fetch(apiUrl);
+
+      if (!response.ok) throw new Error('Pasta não encontrada ou erro na API');
+
+      const data = await response.json();
+
+      // 2. Filtra apenas arquivos de vídeo (mp4, webm, mov)
+      const videos = data.filter(file => 
+        file.name.match(/\.(mp4|webm|mov)$/i)
+      );
+
+      // 3. Oculta o loader
+      loader.style.display = 'none';
+
+      // 4. Cria o HTML para cada vídeo
+      if (videos.length === 0) {
+        container.innerHTML = '<p style="text-align:center; width:100%;">Nenhum vídeo encontrado na pasta.</p>';
+        return;
+      }
+
+      videos.forEach(video => {
+        // Cria a estrutura do card
+        const wrapper = document.createElement('div');
+        wrapper.className = 'video-wrapper';
+
+        // Otimização: preload="metadata" carrega só o início, não o vídeo todo
+        // Otimização: muted playsinline ajuda a carregar mais rápido em mobile
+        wrapper.innerHTML = `
+          <video 
+            controls 
+            preload="metadata" 
+            playsinline
+            title="${video.name}"
+          >
+            <source src="${video.download_url}" type="video/mp4">
+            Seu navegador não suporta vídeos.
+          </video>
+        `;
+        container.appendChild(wrapper);
+      });
+
+    } catch (error) {
+      console.error(error);
+      loader.innerHTML = `<p style="color: #ff4d4d">Erro ao carregar vídeos.<br>Verifique as configurações no código.</p>`;
+    }
+  }
+
+  // Executa a função
+  loadVideos();
+</script>
 
 </body>
 </html>
