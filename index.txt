@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Meu Portfólio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <h1>Meu Portfólio</h1>
+  <p>Desenvolvedor que não faz site feio</p>
+</header>
+
+<section id="upload">
+  <h2>Upload de Vídeos</h2>
+  <input type="file" id="videoInput" accept="video/*" />
+  <button onclick="uploadVideo()">Enviar Vídeo</button>
+  <progress id="progress" value="0" max="100"></progress>
+</section>
+
+<section id="videos">
+  <h2>Meus Vídeos</h2>
+  <div id="videoList"></div>
+</section>
+
+<footer>
+  <p>© 2026 - Feito com menos preguiça que você</p>
+</footer>
+
+<script type="module" src="firebase.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
