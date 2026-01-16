@@ -4,149 +4,93 @@
   <meta charset="UTF-8">
   <title>Portifolio // Visual Experience</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-color: #05020a;
-      --primary: #bb29ff; 
+      --primary: #bb29ff;
       --secondary: #00f2ff;
-      --glass: rgba(255, 255, 255, 0.05);
-      --glass-border: rgba(255, 255, 255, 0.1);
+      --glass: rgba(255,255,255,.05);
+      --glass-border: rgba(255,255,255,.1);
       --text: #e0e0e0;
-    }
-
-    @keyframes gradient-move {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
     }
 
     body {
       margin: 0;
       font-family: 'Outfit', sans-serif;
-      background: linear-gradient(-45deg, #0f0617, #1a0b2e, #240046, #000000);
+      background: linear-gradient(-45deg,#0f0617,#1a0b2e,#240046,#000);
       background-size: 400% 400%;
-      animation: gradient-move 15s ease infinite;
+      animation: bg 15s ease infinite;
       color: var(--text);
-      overflow-x: hidden;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
+    @keyframes bg {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+
     header {
       text-align: center;
       padding: 80px 20px;
-      position: relative;
-      z-index: 1;
     }
 
     header h1 {
       font-size: 4rem;
-      margin: 0;
-      background: -webkit-linear-gradient(0deg, var(--secondary), var(--primary));
+      background: linear-gradient(90deg,var(--secondary),var(--primary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0px 0px 30px rgba(187, 41, 255, 0.4);
-      letter-spacing: -2px;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    header p {
-      font-weight: 300;
-      font-size: 1.2rem;
-      opacity: 0.8;
-      margin-top: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
     }
 
     section {
-      padding: 40px;
       max-width: 1000px;
-      margin: 0 auto 50px auto;
+      margin: auto;
+      padding: 40px;
       background: var(--glass);
       backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--glass-border);
       border-radius: 24px;
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
 
     h2 {
       border-bottom: 2px solid var(--primary);
-      display: inline-block;
       padding-bottom: 10px;
-      margin-bottom: 30px;
-      font-weight: 600;
-      text-transform: uppercase;
-      font-size: 1.5rem;
     }
 
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
       gap: 30px;
     }
 
     .video-wrapper {
-      position: relative;
       border-radius: 16px;
       overflow: hidden;
-      border: 1px solid var(--glass-border);
-      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
       background: #000;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    }
-
-    .video-wrapper:hover {
-      transform: scale(1.03) translateY(-5px);
-      border-color: var(--secondary);
-      box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+      border: 1px solid var(--glass-border);
     }
 
     video {
       width: 100%;
       height: 100%;
-      display: block;
       object-fit: cover;
     }
-
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      z-index: -1;
-      opacity: 0.6;
-    }
-    .orb-1 { width: 300px; height: 300px; background: var(--primary); top: 10%; left: 10%; }
-    .orb-2 { width: 400px; height: 400px; background: #3a0ca3; bottom: 20%; right: 5%; }
 
     footer {
       text-align: center;
       padding: 30px;
-      background: rgba(0,0,0,0.8);
-      font-size: 14px;
       color: #888;
       margin-top: auto;
-      border-top: 1px solid var(--glass-border);
     }
   </style>
 </head>
 <body>
-
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
 
 <header>
   <h1>SOARES</h1>
@@ -155,8 +99,7 @@
 
 <section>
   <h2>GALERIA DINÂMICA</h2>
-
-  <div id="loader" style="text-align: center; padding: 20px;">Carregando vídeos...</div>
+  <div id="loader">Carregando vídeos...</div>
   <div class="video-grid" id="video-container"></div>
 </section>
 
@@ -165,35 +108,44 @@
 </footer>
 
 <script>
-  // CONFIGURAÇÕES BASEADAS NO SEU PRINT
-  const githubUser = 'GHOSTGOSTOSO'; 
-  const githubRepo = 'Portifolio'; // Nome exato do seu repositório no print
-  const folderName = 'vídeos';    // Nome com acento conforme aparece no seu print
+  const githubUser = 'GHOSTGOSTOSO';
+  const githubRepo = 'Portifolio';
+  const folderName = 'videos';
 
   async function loadVideos() {
     const container = document.getElementById('video-container');
     const loader = document.getElementById('loader');
 
     try {
-      // API do GitHub para listar arquivos
-      const response = await fetch(`https://api.github.com/repos/${githubUser}/${githubRepo}/contents/${folderName}`);
-      
-      if (!response.ok) throw new Error("Erro ao acessar pasta");
-      
-      const data = await response.json();
-      loader.style.display = 'none';
+      const res = await fetch(
+        `https://api.github.com/repos/${githubUser}/${githubRepo}/contents/${folderName}`
+      );
 
-      data.forEach(file => {
-        if (file.name.endsWith('.mp4')) {
-          const wrapper = document.createElement('div');
-          wrapper.className = 'video-wrapper';
-          // Usando preload="metadata" para carregar rápido sem pesar a página
-          wrapper.innerHTML = `<video controls preload="metadata" src="${file.download_url}"></video>`;
-          container.appendChild(wrapper);
-        }
+      if (!res.ok) throw new Error();
+
+      const files = await res.json();
+      loader.remove();
+
+      const videos = files.filter(f => f.name.toLowerCase().endsWith('.mp4'));
+
+      if (!videos.length) {
+        container.innerHTML = '<p>Nenhum vídeo encontrado.</p>';
+        return;
+      }
+
+      videos.forEach(file => {
+        const div = document.createElement('div');
+        div.className = 'video-wrapper';
+        div.innerHTML = `
+          <video controls preload="metadata">
+            <source src="${file.download_url}" type="video/mp4">
+          </video>
+        `;
+        container.appendChild(div);
       });
-    } catch (error) {
-      loader.innerHTML = '<span style="color: #ff4d4d">Erro ao carregar vídeos.<br>Verifique as configurações no código.</span>';
+
+    } catch {
+      loader.innerHTML = 'Erro ao carregar vídeos. Confere o repositório.';
     }
   }
 
