@@ -2,12 +2,12 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Portifolio // Visual Experience</title>
+  <title>Portifólio // Visual Experience</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -43,9 +43,19 @@
 
     header h1 {
       font-size: 4rem;
+      margin: 0;
       background: linear-gradient(90deg,var(--secondary),var(--primary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    header .subtitle {
+      margin-top: 10px;
+      font-size: 1rem;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.7;
     }
 
     section {
@@ -61,6 +71,7 @@
     h2 {
       border-bottom: 2px solid var(--primary);
       padding-bottom: 10px;
+      margin-bottom: 30px;
     }
 
     .video-grid {
@@ -76,10 +87,20 @@
       border: 1px solid var(--glass-border);
     }
 
+    .video-title {
+      padding: 12px;
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      background: rgba(0,0,0,0.6);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
     video {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
 
     footer {
@@ -94,11 +115,11 @@
 
 <header>
   <h1>SOARES</h1>
-  <p>Seu conteúdo, editado pra performar melhor.</p>
+  <div class="subtitle">portifólio</div>
 </header>
 
 <section>
-  <h2>GALERIA DINÂMICA</h2>
+  <h2>GALERIA</h2>
   <div id="loader">Carregando vídeos...</div>
   <div class="video-grid" id="video-container"></div>
 </section>
@@ -111,6 +132,13 @@
   const githubUser = 'GHOSTGOSTOSO';
   const githubRepo = 'Portifolio';
   const folderName = 'videos';
+
+  // TÍTULOS DOS VÍDEOS (ordem)
+  const videoTitles = [
+    'Trabalho escolar',
+    '',
+    ''
+  ];
 
   async function loadVideos() {
     const container = document.getElementById('video-container');
@@ -128,24 +156,22 @@
 
       const videos = files.filter(f => f.name.toLowerCase().endsWith('.mp4'));
 
-      if (!videos.length) {
-        container.innerHTML = '<p>Nenhum vídeo encontrado.</p>';
-        return;
-      }
-
-      videos.forEach(file => {
+      videos.forEach((file, index) => {
         const div = document.createElement('div');
         div.className = 'video-wrapper';
+
         div.innerHTML = `
+          <div class="video-title">${videoTitles[index] || ''}</div>
           <video controls preload="metadata">
             <source src="${file.download_url}" type="video/mp4">
           </video>
         `;
+
         container.appendChild(div);
       });
 
     } catch {
-      loader.innerHTML = 'Erro ao carregar vídeos. Confere o repositório.';
+      loader.innerHTML = 'Erro ao carregar vídeos.';
     }
   }
 
