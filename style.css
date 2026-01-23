@@ -5,12 +5,12 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Sora', sans-serif;
   background: #0f0617;
   color: #eee;
 }
 
-/* REMOVE EFEITO AZUL / FOCUS / TAP */
+/* REMOVE EFEITO AZUL */
 button,
 button:focus,
 button:active {
@@ -30,7 +30,8 @@ button:active {
 }
 
 .title {
-  font-size: 3rem;
+  font-size: clamp(2.8rem, 8vw, 4rem);
+  font-weight: 800;
   animation: fadeDown 1s ease;
 }
 
