@@ -13,7 +13,7 @@ html, body {
   scroll-behavior: smooth;
 }
 
-/* Remove highlight azul do celular */
+/* Remove highlight azul mobile */
 button, a {
   -webkit-tap-highlight-color: transparent;
 }
@@ -29,10 +29,11 @@ button:focus-visible {
   background:
     radial-gradient(
       circle at top,
-      #b26cff 0%,
-      #7c3aed 30%,
-      #2a003f 55%,
-      #0a000f 70%,
+      #c4b5fd 0%,
+      #a78bfa 18%,
+      #7c3aed 35%,
+      #3b0764 55%,
+      #120015 70%,
       #050008 85%
     );
   display: flex;
@@ -43,14 +44,14 @@ button:focus-visible {
   overflow: hidden;
 }
 
-/* Transição suave para baixo (ESSENCIAL) */
+/* Transição suave */
 .hero::after {
   content: "";
   position: absolute;
   bottom: -1px;
   left: 0;
   width: 100%;
-  height: 160px;
+  height: 180px;
   background: linear-gradient(
     to bottom,
     rgba(5,0,8,0) 0%,
@@ -58,31 +59,34 @@ button:focus-visible {
   );
 }
 
+/* TEXTOS */
 .title {
   font-size: 4rem;
   font-weight: 800;
-  background: linear-gradient(90deg, #ffffff, #e9d5ff);
+  background: linear-gradient(90deg, #ffffff, #ede9fe);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
   opacity: 0.75;
-  margin: 12px 0 40px;
+  margin: 14px 0 40px;
+  max-width: 80%;
 }
 
 /* BOTÃO */
 .cta {
   position: relative;
-  padding: 14px 36px;
+  padding: 14px 38px;
   font-size: 1rem;
   font-weight: 600;
   color: #fff;
-  background: transparent;
-  border: 2px solid #a855f7;
+  background: rgba(124,58,237,0.08);
+  border: 1px solid rgba(167,139,250,0.5);
   border-radius: 50px;
   cursor: pointer;
   overflow: hidden;
+  backdrop-filter: blur(6px);
 }
 
 .cta span {
@@ -91,21 +95,21 @@ button:focus-visible {
   background: linear-gradient(
     120deg,
     transparent,
-    rgba(168,85,247,0.6),
+    rgba(199,210,254,0.35),
     transparent
   );
   transform: translateX(-100%);
 }
 
 .cta:hover span {
-  animation: shine 1.2s infinite;
+  animation: shine 1.4s infinite;
 }
 
 @keyframes shine {
   to { transform: translateX(100%); }
 }
 
-/* SEÇÃO DE VÍDEOS */
+/* SEÇÃO VÍDEOS */
 .videos {
   position: relative;
   padding: 140px 6vw 120px;
@@ -113,7 +117,8 @@ button:focus-visible {
     linear-gradient(
       to bottom,
       #050008 0%,
-      #09000f 30%,
+      #09000f 35%,
+      #020003 70%,
       #000000 100%
     );
 }
@@ -121,6 +126,9 @@ button:focus-visible {
 .videos h2 {
   font-size: 2.4rem;
   margin-bottom: 50px;
+  background: linear-gradient(90deg, #fff, #c7d2fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .grid {
@@ -129,13 +137,20 @@ button:focus-visible {
   gap: 30px;
 }
 
+/* CARDS */
 .card {
-  background: #0e001a;
-  border-radius: 16px;
+  background: linear-gradient(
+    180deg,
+    rgba(124,58,237,0.08),
+    rgba(0,0,0,0.6)
+  );
+  border: 1px solid rgba(124,58,237,0.15);
+  border-radius: 18px;
   padding: 20px;
   opacity: 0;
   transform: translateY(40px);
   transition: 0.6s ease;
+  backdrop-filter: blur(6px);
 }
 
 .card.show {
