@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Soares — Portfólio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- FONTES -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <title>Portfólio • Edição de Vídeo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- HERO -->
-  <header class="hero">
-    <h1 class="fade-in">SOARES</h1>
-    <p class="subtitle fade-in-delay">Edição de Vídeo & Motion Design</p>
+<header class="hero">
+  <h1 class="title">Portfólio</h1>
+  <p class="subtitle">Edição de vídeo focada em impacto</p>
 
-    <button class="btn-trabalhos" id="btnTrabalhos">
-      <span>Ver Trabalhos</span>
-    </button>
-  </header>
+  <button id="scrollBtn" class="cta">
+    Ver trabalhos
+    <span></span>
+  </button>
+</header>
 
-  <!-- TRABALHOS -->
-  <section id="trabalhos" class="trabalhos">
-    <h2>Meus Trabalhos</h2>
+<section class="videos" id="videos">
+  <h2>Trabalhos</h2>
 
-    <div class="grid">
-      <video controls src="videos/video1.mp4"></video>
-      <video controls src="videos/video2.mp4"></video>
-      <video controls src="videos/video3.mp4"></video>
+  <div class="grid">
+    <div class="card">
+      <h3>Reel Instagram</h3>
+      <video src="videos/edit1.mp4" controls></video>
     </div>
-  </section>
 
-  <script src="script.js"></script>
+    <div class="card">
+      <h3>Clipe Musical</h3>
+      <video src="videos/edit2.mp4" controls></video>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 • Editor de Vídeo
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
