@@ -8,12 +8,12 @@
 
 html, body {
   font-family: 'Montserrat', sans-serif;
-  background: #0b0b10;
+  background: #050008;
   color: #fff;
   scroll-behavior: smooth;
 }
 
-/* Remove luz azul do Google */
+/* Remove a luz azul do capeta */
 button, a {
   -webkit-tap-highlight-color: transparent;
 }
@@ -27,34 +27,51 @@ button:focus-visible {
 .hero {
   position: relative;
   height: 100vh;
-  background: linear-gradient(135deg, #14002b, #050014);
+  background:
+    radial-gradient(
+      circle at top,
+      #a855f7 0%,
+      #6d28d9 25%,
+      #2a003f 50%,
+      #0a000f 75%,
+      #050008 100%
+    );
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   overflow: hidden;
+  transition: filter 0.6s ease;
 }
 
+/* Desfoque ao scroll */
 .hero.blur {
-  filter: blur(10px);
-  transition: filter 0.6s ease;
+  filter: blur(10px) brightness(0.8);
 }
 
 .overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top, rgba(140,0,255,0.25), transparent 60%);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.08),
+      rgba(0,0,0,0.6)
+    );
 }
 
 .title {
   font-size: 4rem;
   font-weight: 800;
   z-index: 1;
+  background: linear-gradient(90deg, #ffffff, #d8b4fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
-  opacity: 0.7;
+  opacity: 0.75;
   margin: 12px 0 40px;
   z-index: 1;
 }
@@ -67,7 +84,7 @@ button:focus-visible {
   font-weight: 600;
   color: #fff;
   background: transparent;
-  border: 2px solid #8f3dff;
+  border: 2px solid #a855f7;
   border-radius: 50px;
   cursor: pointer;
   overflow: hidden;
@@ -77,7 +94,12 @@ button:focus-visible {
 .cta span {
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, transparent, rgba(143,61,255,0.4), transparent);
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(168,85,247,0.6),
+    transparent
+  );
   transform: translateX(-100%);
 }
 
@@ -91,9 +113,15 @@ button:focus-visible {
   }
 }
 
-/* VÍDEOS */
+/* SEÇÃO DE VÍDEOS */
 .videos {
-  padding: 100px 6vw;
+  padding: 120px 6vw;
+  background: linear-gradient(
+    to bottom,
+    #050008 0%,
+    #09000f 40%,
+    #000000 100%
+  );
 }
 
 .videos h2 {
@@ -108,7 +136,7 @@ button:focus-visible {
 }
 
 .card {
-  background: #0f0f1a;
+  background: #0e001a;
   border-radius: 16px;
   padding: 20px;
   opacity: 0;
@@ -136,4 +164,5 @@ footer {
   text-align: center;
   padding: 40px;
   opacity: 0.4;
+  background: #000;
 }
