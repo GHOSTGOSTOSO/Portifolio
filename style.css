@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #0f0617;
+  color: #eee;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: linear-gradient(135deg, #6a0dad, #9b4dff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  animation: fadeDown 1s ease;
+}
+
+.subtitle {
+  margin: 15px 0;
+  opacity: 0.9;
+  animation: fadeUp 1.2s ease;
+}
+
+#scrollBtn {
+  margin-top: 30px;
+  padding: 12px 24px;
+  border: none;
+  background: #0f0617;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: transform 0.3s;
+}
+
+#scrollBtn:hover {
+  transform: scale(1.1);
+}
+
+/* VIDEOS */
+.videos {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.videos h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: #1a0f2b;
+  padding: 20px;
+  border-radius: 15px;
+  transform: translateY(40px);
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+.card.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+}
+
+.card video {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #1a0f2b;
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
