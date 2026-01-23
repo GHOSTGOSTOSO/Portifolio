@@ -6,7 +6,7 @@
 }
 
 body {
-  background: #0f0617;
+  background: radial-gradient(circle at top, #1b0f2e 0%, #0b0612 60%);
   color: #eee;
 }
 
@@ -21,91 +21,108 @@ button:active {
 /* HERO */
 .hero {
   height: 100vh;
-  background: linear-gradient(135deg, #6a0dad, #9b4dff);
+  position: relative;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(155,77,255,0.25), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(106,13,173,0.2), transparent 45%),
+    linear-gradient(180deg, #12081f, #0b0612);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  overflow: hidden;
+}
+
+/* LUZ SUAVE */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.04), transparent 60%);
+  pointer-events: none;
 }
 
 .title {
-  font-size: clamp(2.8rem, 8vw, 4rem);
+  font-size: clamp(3rem, 9vw, 4.5rem);
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   animation: fadeDown 1s ease;
 }
 
 .subtitle {
-  margin: 15px 0 25px;
-  opacity: 0.9;
+  margin: 18px 0 35px;
+  opacity: 0.75;
   font-weight: 400;
+  max-width: 520px;
   animation: fadeUp 1.2s ease;
 }
 
 /* BOTÃO CTA */
 .cta {
   position: relative;
-  padding: 14px 40px;
-  font-size: 1rem;
+  padding: 15px 44px;
+  font-size: 0.95rem;
   font-weight: 600;
-  border-radius: 40px;
-  border: none;
-  cursor: pointer;
-  background: #0f0617;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.04);
   color: #fff;
+  cursor: pointer;
   overflow: hidden;
-  animation: pulse 2s infinite;
-  transition: transform 0.3s ease;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cta:hover {
-  transform: scale(1.12);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 40px rgba(155,77,255,0.35);
 }
 
-/* Glow pulsante */
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(155,77,255,0.7); }
-  70% { box-shadow: 0 0 0 25px rgba(155,77,255,0); }
-  100% { box-shadow: 0 0 0 0 rgba(155,77,255,0); }
-}
-
-/* Ripple */
+/* EFEITO LUZ */
 .cta span {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, rgba(155,77,255,0.4) 10%, transparent 60%);
-  transform: translateX(-100%);
-  transition: transform 0.4s ease;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(155,77,255,0.35),
+    transparent
+  );
+  transform: translateX(-120%);
 }
 
 .cta:hover span {
-  transform: translateX(0);
+  animation: shine 1.2s ease;
 }
 
 /* VIDEOS */
 .videos {
-  padding: 60px 20px;
-  max-width: 1100px;
+  padding: 90px 20px;
+  max-width: 1200px;
   margin: auto;
 }
 
 .videos h2 {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
+  font-size: 2rem;
   font-weight: 700;
+  letter-spacing: 1px;
 }
 
+/* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 35px;
 }
 
 .card {
-  background: #1a0f2b;
-  padding: 20px;
-  border-radius: 15px;
+  background: linear-gradient(180deg, #1a0f2b, #12081f);
+  padding: 22px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.05);
   transform: translateY(40px);
   opacity: 0;
   transition: all 0.6s ease;
@@ -117,21 +134,24 @@ button:active {
 }
 
 .card h3 {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-weight: 600;
+  opacity: 0.9;
 }
 
 .card video {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 14px;
+  background: #000;
 }
 
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 30px;
-  background: #1a0f2b;
-  font-size: 0.9rem;
+  padding: 35px;
+  background: #0b0612;
+  font-size: 0.85rem;
+  opacity: 0.6;
 }
 
 /* ANIMAÇÕES */
@@ -143,4 +163,9 @@ footer {
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shine {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(120%); }
 }
