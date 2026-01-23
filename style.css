@@ -2,10 +2,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Sora', sans-serif !important;
 }
 
 body {
-  font-family: 'Sora', sans-serif;
   background: #0f0617;
   color: #eee;
 }
@@ -32,12 +32,14 @@ button:active {
 .title {
   font-size: clamp(2.8rem, 8vw, 4rem);
   font-weight: 800;
+  letter-spacing: 2px;
   animation: fadeDown 1s ease;
 }
 
 .subtitle {
   margin: 15px 0 25px;
   opacity: 0.9;
+  font-weight: 400;
   animation: fadeUp 1.2s ease;
 }
 
@@ -46,6 +48,7 @@ button:active {
   position: relative;
   padding: 14px 40px;
   font-size: 1rem;
+  font-weight: 600;
   border-radius: 40px;
   border: none;
   cursor: pointer;
@@ -90,6 +93,7 @@ button:active {
 .videos h2 {
   text-align: center;
   margin-bottom: 40px;
+  font-weight: 700;
 }
 
 .grid {
@@ -114,6 +118,7 @@ button:active {
 
 .card h3 {
   margin-bottom: 10px;
+  font-weight: 600;
 }
 
 .card video {
@@ -126,9 +131,10 @@ footer {
   text-align: center;
   padding: 30px;
   background: #1a0f2b;
+  font-size: 0.9rem;
 }
 
-/* ANIMAÇÕES TEXTO */
+/* ANIMAÇÕES */
 @keyframes fadeDown {
   from { opacity: 0; transform: translateY(-40px); }
   to { opacity: 1; transform: translateY(0); }
