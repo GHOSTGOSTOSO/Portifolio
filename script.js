@@ -1,9 +1,11 @@
-// Scroll suave pro botão
+// Scroll suave ao clicar no botão
 document.getElementById("scrollBtn").addEventListener("click", () => {
-  document.getElementById("videos").scrollIntoView({ behavior: "smooth" });
+  document.getElementById("videos").scrollIntoView({
+    behavior: "smooth"
+  });
 });
 
-// Animação ao aparecer na tela
+// Animação dos cards ao aparecer
 const cards = document.querySelectorAll(".card");
 
 const observer = new IntersectionObserver(entries => {
@@ -12,8 +14,6 @@ const observer = new IntersectionObserver(entries => {
       entry.target.classList.add("show");
     }
   });
-}, {
-  threshold: 0.2
-});
+}, { threshold: 0.2 });
 
 cards.forEach(card => observer.observe(card));
