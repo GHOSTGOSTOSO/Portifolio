@@ -2,181 +2,38 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Portifólio // Visual Experience</title>
+  <title>Portfólio • Edição de Vídeo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --primary: #bb29ff;
-      --secondary: #00f2ff;
-      --glass: rgba(255,255,255,.05);
-      --glass-border: rgba(255,255,255,.1);
-      --text: #e0e0e0;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Outfit', sans-serif;
-      background: linear-gradient(-45deg,#0f0617,#1a0b2e,#240046,#000);
-      background-size: 400% 400%;
-      animation: bg 15s ease infinite;
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    @keyframes bg {
-      0%{background-position:0% 50%}
-      50%{background-position:100% 50%}
-      100%{background-position:0% 50%}
-    }
-
-    header {
-      text-align: center;
-      padding: 80px 20px;
-    }
-
-    header h1 {
-      font-size: 4rem;
-      margin: 0;
-      background: linear-gradient(90deg,var(--secondary),var(--primary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    header .subtitle {
-      margin-top: 10px;
-      font-size: 1rem;
-      font-weight: 300;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      opacity: 0.7;
-    }
-
-    section {
-      max-width: 1000px;
-      margin: auto;
-      padding: 40px;
-      background: var(--glass);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border);
-      border-radius: 24px;
-    }
-
-    h2 {
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: 10px;
-      margin-bottom: 30px;
-    }
-
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-      gap: 30px;
-    }
-
-    .video-wrapper {
-      border-radius: 16px;
-      overflow: hidden;
-      background: #000;
-      border: 1px solid var(--glass-border);
-    }
-
-    .video-title {
-      padding: 12px;
-      font-size: 0.95rem;
-      font-weight: 400;
-      letter-spacing: 1px;
-      background: rgba(0,0,0,0.6);
-      border-bottom: 1px solid var(--glass-border);
-    }
-
-    video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #888;
-      margin-top: auto;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <h1>SOARES</h1>
-  <div class="subtitle">portifólio</div>
+<header class="hero">
+  <h1 class="title">Portfólio</h1>
+  <p class="subtitle">Edição de vídeo focada em impacto</p>
+  <button id="scrollBtn">Ver trabalhos ↓</button>
 </header>
 
-<section>
-  <h2>GALERIA</h2>
-  <div id="loader">Carregando vídeos...</div>
-  <div class="video-grid" id="video-container"></div>
+<section class="videos" id="videos">
+  <h2>Trabalhos</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Reel Instagram</h3>
+      <video src="videos/edit1.mp4" controls></video>
+    </div>
+
+    <div class="card">
+      <h3>Clipe Musical</h3>
+      <video src="videos/edit2.mp4" controls></video>
+    </div>
+  </div>
 </section>
 
 <footer>
-  © 2026 — Desenvolvimento com atenção aos detalhes.
+  <p>© 2026 • Editor de Vídeo</p>
 </footer>
 
-<script>
-  const githubUser = 'GHOSTGOSTOSO';
-  const githubRepo = 'Portifolio';
-  const folderName = 'videos';
-
-  // TÍTULOS DOS VÍDEOS (ordem)
-  const videoTitles = [
-    'Trabalho escolar',
-    '',
-    ''
-  ];
-
-  async function loadVideos() {
-    const container = document.getElementById('video-container');
-    const loader = document.getElementById('loader');
-
-    try {
-      const res = await fetch(
-        `https://api.github.com/repos/${githubUser}/${githubRepo}/contents/${folderName}`
-      );
-
-      if (!res.ok) throw new Error();
-
-      const files = await res.json();
-      loader.remove();
-
-      const videos = files.filter(f => f.name.toLowerCase().endsWith('.mp4'));
-
-      videos.forEach((file, index) => {
-        const div = document.createElement('div');
-        div.className = 'video-wrapper';
-
-        div.innerHTML = `
-          <div class="video-title">${videoTitles[index] || ''}</div>
-          <video controls preload="metadata">
-            <source src="${file.download_url}" type="video/mp4">
-          </video>
-        `;
-
-        container.appendChild(div);
-      });
-
-    } catch {
-      loader.innerHTML = 'Erro ao carregar vídeos.';
-    }
-  }
-
-  loadVideos();
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
