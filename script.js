@@ -1,16 +1,17 @@
+// Scroll suave com blur
 const scrollBtn = document.getElementById("scrollBtn");
-const hero = document.querySelector(".hero");
+const videos = document.getElementById("videos");
 
 scrollBtn.addEventListener("click", () => {
-  hero.classList.add("blur");
+  document.body.classList.add("scrolling");
 
-  document.getElementById("videos").scrollIntoView({
+  videos.scrollIntoView({
     behavior: "smooth"
   });
 
   setTimeout(() => {
-    hero.classList.remove("blur");
-  }, 700);
+    document.body.classList.remove("scrolling");
+  }, 800);
 });
 
 // Animação dos cards
