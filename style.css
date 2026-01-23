@@ -1,155 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Sora', sans-serif !important;
+  box-sizing: border-box;
 }
 
-body {
-  background: radial-gradient(circle at top, #1b0f2e 0%, #0b0612 60%);
-  color: #eee;
-  transition: filter 0.6s ease;
+html, body {
+  font-family: 'Montserrat', sans-serif;
+  background: #0b0b10;
+  color: #fff;
+  scroll-behavior: smooth;
 }
 
-/* BLUR ATIVO */
-body.blur {
-  filter: blur(6px);
-}
-
-/* REMOVE EFEITO AZUL */
-button,
-button:focus,
-button:active {
-  outline: none;
+/* Remove luz azul do Google */
+button, a {
   -webkit-tap-highlight-color: transparent;
+}
+
+button:focus,
+button:focus-visible {
+  outline: none;
 }
 
 /* HERO */
 .hero {
-  height: 100vh;
   position: relative;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(155,77,255,0.25), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(106,13,173,0.2), transparent 45%),
-    linear-gradient(180deg, #12081f, #0b0612);
+  height: 100vh;
+  background: linear-gradient(135deg, #14002b, #050014);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   text-align: center;
+  overflow: hidden;
 }
 
-/* TEXTO */
+.hero.blur {
+  filter: blur(10px);
+  transition: filter 0.6s ease;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(140,0,255,0.25), transparent 60%);
+}
+
 .title {
-  font-size: clamp(3rem, 9vw, 4.5rem);
+  font-size: 4rem;
   font-weight: 800;
-  letter-spacing: 3px;
-  animation: fadeDown 1s ease;
+  z-index: 1;
 }
 
 .subtitle {
-  margin: 18px 0 35px;
-  opacity: 0.75;
-  max-width: 520px;
-  animation: fadeUp 1.2s ease;
+  opacity: 0.7;
+  margin: 12px 0 40px;
+  z-index: 1;
 }
 
 /* BOTÃO */
 .cta {
   position: relative;
-  padding: 15px 44px;
-  font-size: 0.95rem;
+  padding: 14px 36px;
+  font-size: 1rem;
   font-weight: 600;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.04);
   color: #fff;
+  background: transparent;
+  border: 2px solid #8f3dff;
+  border-radius: 50px;
   cursor: pointer;
   overflow: hidden;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cta:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 10px 40px rgba(155,77,255,0.35);
+  z-index: 1;
 }
 
 .cta span {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(155,77,255,0.35),
-    transparent
-  );
-  transform: translateX(-120%);
+  background: linear-gradient(120deg, transparent, rgba(143,61,255,0.4), transparent);
+  transform: translateX(-100%);
 }
 
 .cta:hover span {
-  animation: shine 1.2s ease;
+  animation: shine 1.2s infinite;
 }
 
-/* VIDEOS */
+@keyframes shine {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* VÍDEOS */
 .videos {
-  padding: 90px 20px;
-  max-width: 1200px;
-  margin: auto;
+  padding: 100px 6vw;
 }
 
 .videos h2 {
-  text-align: center;
-  margin-bottom: 60px;
-  font-size: 2rem;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 35px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
 }
 
 .card {
-  background: linear-gradient(180deg, #1a0f2b, #12081f);
-  padding: 22px;
-  border-radius: 18px;
-  transform: translateY(40px);
+  background: #0f0f1a;
+  border-radius: 16px;
+  padding: 20px;
   opacity: 0;
-  transition: all 0.6s ease;
+  transform: translateY(40px);
+  transition: 0.6s ease;
 }
 
 .card.show {
-  transform: translateY(0);
   opacity: 1;
+  transform: translateY(0);
 }
 
-.card video {
+.card h3 {
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+video {
   width: 100%;
-  border-radius: 14px;
+  border-radius: 12px;
 }
 
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 35px;
-  background: #0b0612;
-  font-size: 0.85rem;
-  opacity: 0.6;
-}
-
-/* ANIMAÇÕES */
-@keyframes fadeDown {
-  from { opacity: 0; transform: translateY(-40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes shine {
-  from { transform: translateX(-120%); }
-  to { transform: translateX(120%); }
+  padding: 40px;
+  opacity: 0.4;
 }
