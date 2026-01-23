@@ -27,24 +27,48 @@ body {
 }
 
 .subtitle {
-  margin: 15px 0;
+  margin: 15px 0 25px;
   opacity: 0.9;
   animation: fadeUp 1.2s ease;
 }
 
-#scrollBtn {
-  margin-top: 30px;
-  padding: 12px 24px;
+/* BOTÃO CTA */
+.cta {
+  position: relative;
+  padding: 14px 40px;
+  font-size: 1rem;
+  border-radius: 40px;
   border: none;
+  cursor: pointer;
   background: #0f0617;
   color: #fff;
-  cursor: pointer;
-  border-radius: 30px;
-  transition: transform 0.3s;
+  overflow: hidden;
+  animation: pulse 2s infinite;
+  transition: transform 0.3s ease;
 }
 
-#scrollBtn:hover {
-  transform: scale(1.1);
+.cta:hover {
+  transform: scale(1.12);
+}
+
+/* Glow pulsante */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(155,77,255,0.7); }
+  70% { box-shadow: 0 0 0 25px rgba(155,77,255,0); }
+  100% { box-shadow: 0 0 0 0 rgba(155,77,255,0); }
+}
+
+/* Ripple */
+.cta span {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(155,77,255,0.4) 10%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+
+.cta:hover span {
+  transform: translateX(0);
 }
 
 /* VIDEOS */
@@ -95,7 +119,7 @@ footer {
   background: #1a0f2b;
 }
 
-/* ANIMAÇÕES */
+/* ANIMAÇÕES TEXTO */
 @keyframes fadeDown {
   from { opacity: 0; transform: translateY(-40px); }
   to { opacity: 1; transform: translateY(0); }
