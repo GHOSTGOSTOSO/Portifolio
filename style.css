@@ -10,6 +10,14 @@ body {
   color: #eee;
 }
 
+/* REMOVE EFEITO AZUL / FOCUS / TAP */
+button,
+button:focus,
+button:active {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* HERO */
 .hero {
   height: 100vh;
