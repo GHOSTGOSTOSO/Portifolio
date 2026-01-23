@@ -1,8 +1,19 @@
-// Scroll suave
-document.getElementById("scrollBtn").addEventListener("click", () => {
-  document.getElementById("videos").scrollIntoView({
+const btn = document.getElementById("scrollBtn");
+const section = document.getElementById("videos");
+const body = document.body;
+
+// Scroll + blur cinematográfico
+btn.addEventListener("click", () => {
+  body.classList.add("blur");
+
+  section.scrollIntoView({
     behavior: "smooth"
   });
+
+  // Remove blur depois da transição
+  setTimeout(() => {
+    body.classList.remove("blur");
+  }, 700);
 });
 
 // Animação dos cards
