@@ -1,18 +1,15 @@
-const btn = document.getElementById("scrollBtn");
-const section = document.getElementById("videos");
-const body = document.body;
+const scrollBtn = document.getElementById("scrollBtn");
+const hero = document.querySelector(".hero");
 
-// Scroll + blur cinematográfico
-btn.addEventListener("click", () => {
-  body.classList.add("blur");
+scrollBtn.addEventListener("click", () => {
+  hero.classList.add("blur");
 
-  section.scrollIntoView({
+  document.getElementById("videos").scrollIntoView({
     behavior: "smooth"
   });
 
-  // Remove blur depois da transição
   setTimeout(() => {
-    body.classList.remove("blur");
+    hero.classList.remove("blur");
   }, 700);
 });
 
