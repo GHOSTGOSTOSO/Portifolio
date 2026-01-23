@@ -1,19 +1,18 @@
-// Scroll suave ao clicar no botão
-document.getElementById("scrollBtn").addEventListener("click", () => {
-  document.getElementById("videos").scrollIntoView({
-    behavior: "smooth"
-  });
+const btn = document.querySelector(".btn-trabalhos");
+
+btn.addEventListener("mousemove", (e) => {
+  const rect = btn.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  btn.style.setProperty("--x", `${x}px`);
+  btn.style.setProperty("--y", `${y}px`);
 });
 
-// Animação dos cards ao aparecer
-const cards = document.querySelectorAll(".card");
+btn.addEventListener("click", () => {
+  btn.classList.add("clicked");
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
-}, { threshold: 0.2 });
-
-cards.forEach(card => observer.observe(card));
+  setTimeout(() => {
+    btn.classList.remove("clicked");
+  }, 300);
+});
