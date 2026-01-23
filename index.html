@@ -5,7 +5,7 @@
   <title>Soares — Portfólio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- FONTES ZIKA -->
+  <!-- FONTES -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
@@ -14,14 +14,26 @@
 </head>
 <body>
 
+  <!-- HERO -->
   <header class="hero">
     <h1 class="fade-in">SOARES</h1>
     <p class="subtitle fade-in-delay">Edição de Vídeo & Motion Design</p>
 
-    <button class="btn-trabalhos">
+    <button class="btn-trabalhos" id="btnTrabalhos">
       <span>Ver Trabalhos</span>
     </button>
   </header>
+
+  <!-- TRABALHOS -->
+  <section id="trabalhos" class="trabalhos">
+    <h2>Meus Trabalhos</h2>
+
+    <div class="grid">
+      <video controls src="videos/video1.mp4"></video>
+      <video controls src="videos/video2.mp4"></video>
+      <video controls src="videos/video3.mp4"></video>
+    </div>
+  </section>
 
   <script src="script.js"></script>
 </body>
