@@ -154,3 +154,10 @@ body {
   left: 50%;
   transform: translateX(-50%);
 }
+
+@media (max-width: 600px) {
+  .decor {
+    width: 100px;
+    opacity: 0.7;
+  }
+}
