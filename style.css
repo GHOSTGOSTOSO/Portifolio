@@ -123,3 +123,13 @@ body {
   transform: translateY(0) scale(1);
   filter: blur(0);
 }
+
+/* ================= VIDEO ================= */
+.card video {
+  width: 100%;
+  height: auto;
+  max-height: 520px; /* limite elegante no PC */
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+}
