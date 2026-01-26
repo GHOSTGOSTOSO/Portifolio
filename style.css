@@ -11,22 +11,39 @@ body {
   color: #fff;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 .hero {
+  position: relative;
   height: 100vh;
-  background: radial-gradient(
-    120% 100% at 70% 20%,
-    #8b3fd6 0%,
-    #6a1b9a 40%,
-    #4a0e6f 70%,
-    #0b0612 100%
-  );
+  background:
+    radial-gradient(
+      120% 100% at 70% 20%,
+      #9a5cff 0%,
+      #7b2fc9 35%,
+      #4a0e6f 65%,
+      #0b0612 100%
+    );
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 20px;
+}
+
+/* Degradê extra embaixo da hero */
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(
+    to bottom,
+    rgba(11,6,18,0) 0%,
+    #0b0612 100%
+  );
 }
 
 .hero h1 {
@@ -41,7 +58,7 @@ body {
   margin-bottom: 40px;
 }
 
-/* BOTÃO */
+/* ================= BOTÃO ================= */
 .cta {
   padding: 14px 38px;
   font-size: 1rem;
@@ -64,19 +81,16 @@ body {
   transform: scale(0.96);
 }
 
-/* DEGRADÊ ENTRE SEÇÕES */
-.fade-separator {
-  height: 160px;
+/* ================= TRABALHOS ================= */
+#videos {
+  position: relative;
+  padding: 100px 20px 80px;
   background: linear-gradient(
     to bottom,
-    rgba(11,6,18,0) 0%,
+    #0b0612 0%,
+    #12081d 30%,
     #0b0612 100%
   );
-}
-
-/* TRABALHOS */
-#videos {
-  padding: 80px 20px;
 }
 
 #videos h2 {
@@ -85,12 +99,14 @@ body {
   color: rgba(255,255,255,0.85);
 }
 
+/* ================= GRID ================= */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
 
+/* ================= CARD ================= */
 .card {
   background: linear-gradient(135deg, #2a0d3d, #14091f);
   border-radius: 18px;
@@ -98,8 +114,8 @@ body {
   min-height: 160px;
   opacity: 0;
   transform: translateY(40px) scale(0.96);
-  filter: blur(8px);
-  transition: all 0.7s ease;
+  filter: blur(10px);
+  transition: all 0.8s ease;
 }
 
 .card.show {
