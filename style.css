@@ -133,3 +133,24 @@ body {
   border-radius: 12px;
   display: block;
 }
+
+/* ================= DECORAÇÕES HERO ================= */
+.decor {
+  position: absolute;
+  width: 140px;
+  opacity: 0.85;
+  pointer-events: none;
+  filter: blur(0.3px);
+}
+
+.decor-top {
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.decor-bottom {
+  bottom: 22%;
+  left: 50%;
+  transform: translateX(-50%);
+}
